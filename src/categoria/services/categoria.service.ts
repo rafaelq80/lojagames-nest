@@ -22,7 +22,7 @@ export class CategoriaService {
 
     async findById(id: number): Promise<Categoria> {
 
-        let categoria = await this.categoriaRepository.findOne({
+        const categoria = await this.categoriaRepository.findOne({
             where: {
                 id
             },
@@ -55,20 +55,14 @@ export class CategoriaService {
 
     async update(categoria: Categoria): Promise<Categoria> {
         
-        let buscaCategoria = await this.findById(categoria.id);
-
-        if (!buscaCategoria || !categoria.id)
-            throw new HttpException('Categoria não encontrada!', HttpStatus.NOT_FOUND);
+        await this.findById(categoria.id);
         
         return await this.categoriaRepository.save(categoria);
     }
 
     async delete(id: number): Promise<DeleteResult> {
         
-        let buscaCategoria = await this.findById(id);
-
-        if (!buscaCategoria)
-            throw new HttpException('Categoria não encontrada!', HttpStatus.NOT_FOUND);
+        await this.findById(id);
 
         return await this.categoriaRepository.delete(id);
 

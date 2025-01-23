@@ -53,15 +53,7 @@ export class ProdutoService {
 
     async create(produto: Produto): Promise<Produto> {
 
-        if (produto.categoria) {
-
-            let categoria = await this.categoriaService.findById(produto.categoria.id)
-
-            if (!categoria)
-                throw new HttpException('Categoria não encontrada!', HttpStatus.NOT_FOUND)
-
-            return await this.produtoRepository.save(produto);
-        }
+        await this.categoriaService.findById(produto.categoria.id)
 
         return await this.produtoRepository.save(produto);
 
@@ -69,30 +61,17 @@ export class ProdutoService {
 
     async update(produto: Produto): Promise<Produto> {
 
-        let buscaProduto = await this.findById(produto.id);
+        await this.findById(produto.id);
 
-        if (!buscaProduto || !produto.id)
-            throw new HttpException('Produto não encontrado!', HttpStatus.NOT_FOUND);
-
-        if (produto.categoria) {
-
-            let categoria = await this.categoriaService.findById(produto.categoria.id)
-
-            if (!categoria)
-                throw new HttpException('Categoria não encontrada!', HttpStatus.NOT_FOUND)
-
-            return await this.produtoRepository.save(produto);
-        }
+        await this.categoriaService.findById(produto.categoria.id)
 
         return await this.produtoRepository.save(produto);
+
     }
 
     async delete(id: number): Promise<DeleteResult> {
 
-        let buscaProduto = await this.findById(id);
-
-        if (!buscaProduto)
-            throw new HttpException('Produto não encontrado!', HttpStatus.NOT_FOUND);
+        await this.findById(id);
 
         return await this.produtoRepository.delete(id);
 
