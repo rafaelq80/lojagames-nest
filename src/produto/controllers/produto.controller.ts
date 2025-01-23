@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseFloatPipe, ParseIntPipe, Post, Put } from "@nestjs/common";
 import { Produto } from "../entities/produto.entity";
 import { ProdutoService } from "../services/produto.service";
 
@@ -20,8 +20,8 @@ export class ProdutoController {
 
   @Get('/nome/:nome')
   @HttpCode(HttpStatus.OK)
-  findByTitulo(@Param('nome') nome: string): Promise<Produto[]> {
-    return this.produtoService.findByNome(nome);
+  findAllByNome(@Param('nome') nome: string): Promise<Produto[]> {
+    return this.produtoService.findAllByNome(nome);
   }
 
   @Post()
@@ -44,13 +44,13 @@ export class ProdutoController {
 
   @Get('/preco_maior/:preco')
   @HttpCode(HttpStatus.OK)
-  findByPrecoMaior(@Param('preco') preco: number): Promise<Produto[]> {
+  findByPrecoMaior(@Param('preco', ParseFloatPipe) preco: number): Promise<Produto[]> {
     return this.produtoService.findByPrecoMaior(preco);
   }
 
   @Get('/preco_menor/:preco')
   @HttpCode(HttpStatus.OK)
-  findByPrecoMenor(@Param('preco') preco: number): Promise<Produto[]> {
+  findByPrecoMenor(@Param('preco', ParseFloatPipe) preco: number): Promise<Produto[]> {
     return this.produtoService.findByPrecoMenor(preco);
   }
 

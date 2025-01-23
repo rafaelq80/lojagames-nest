@@ -40,7 +40,7 @@ export class ProdutoService {
 
     }
 
-    async findByNome(nome: string): Promise<Produto[]> {
+    async findAllByNome(nome: string): Promise<Produto[]> {
         return await this.produtoRepository.find({
             where: {
                 nome: Like(`%${nome}%`)
