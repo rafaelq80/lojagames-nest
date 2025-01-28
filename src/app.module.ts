@@ -16,7 +16,6 @@ import { ProdutoModule } from './produto/produto.module';
       database: 'db_lojagames',
       entities: [Produto, Categoria],
       synchronize: true,
-      bigNumberStrings: false, //Permite usar Bigint no DB
     }),
     ProdutoModule,
     CategoriaModule

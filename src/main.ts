@@ -6,17 +6,6 @@ import { DataSourceOptions } from 'typeorm';
 
 async function bootstrap() {
   
-  // Opções para criar o Banco de dados
-  const options: DataSourceOptions = {
-    type: 'mysql',
-    database: 'db_lojagames_new',
-    username: 'root',
-    password: 'root'
-  };
-
-  // Função para criar o Banco de dados
-  await createDatabase({ ifNotExist: true, options });
-
   const app = await NestFactory.create(AppModule);
 
   process.env.TZ = '-03:00';
