@@ -5,7 +5,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 @Entity({name: "tb_categorias"})
 export class Categoria {
 
-    @PrimaryGeneratedColumn({type: 'bigint'})    
+    @PrimaryGeneratedColumn()    
     id: number
 
     @IsNotEmpty()
