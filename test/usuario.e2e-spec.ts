@@ -10,7 +10,6 @@ describe('Testes dos Módulos Usuário e Auth (e2e)', () => {
   let app: INestApplication;
 
   beforeAll(async () => {
-    // Use the helper function to create the app
     app = await createTestingApp();
   });
 

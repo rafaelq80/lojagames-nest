@@ -14,10 +14,9 @@ describe('Testes do Módulo Categoria (e2e)', () => {
   let app: INestApplication;
 
   beforeAll(async () => {
-    // Use the helper function to create the app
+ 
         app = await createTestingApp();
         
-        // Get authentication token
         token = await authenticateUser(app);
 
   });
