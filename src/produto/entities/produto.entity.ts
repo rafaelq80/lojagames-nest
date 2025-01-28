@@ -1,7 +1,7 @@
 import { IsNotEmpty, IsNumber, IsPositive } from "class-validator"
-import { Categoria } from "src/categoria/entities/categoria.entity"
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
 import { NumericTransformer } from "../../util/numerictransformer"
+import { Categoria } from "../../categoria/entities/categoria.entity"
 
 @Entity({ name: "tb_produtos" })
 export class Produto {
