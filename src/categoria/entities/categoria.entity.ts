@@ -1,11 +1,11 @@
 import { IsNotEmpty } from "class-validator";
-import { Produto } from "src/produto/entities/produto.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Produto } from "../../produto/entities/produto.entity";
 
 @Entity({name: "tb_categorias"})
 export class Categoria {
 
-    @PrimaryGeneratedColumn({type: 'bigint'})    
+    @PrimaryGeneratedColumn()    
     id: number
 
     @IsNotEmpty()
