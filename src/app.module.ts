@@ -16,10 +16,9 @@ import { UsuarioModule } from './usuario/usuario.module';
       port: 3306,
       username: 'root',
       password: 'root',
-      database: 'db_lojagames',
+      database: 'db_lojagames_new',
       entities: [Produto, Categoria, Usuario],
       synchronize: true,
-      bigNumberStrings: false, //Permite usar Bigint no DB
     }),
     ProdutoModule,
     CategoriaModule,

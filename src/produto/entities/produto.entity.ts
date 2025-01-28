@@ -6,7 +6,7 @@ import { NumericTransformer } from "../../util/numerictransformer"
 @Entity({ name: "tb_produtos" })
 export class Produto {
 
-    @PrimaryGeneratedColumn({type: 'bigint'})
+    @PrimaryGeneratedColumn()
     id: number
 
     @IsNotEmpty()
